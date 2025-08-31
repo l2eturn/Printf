@@ -26,9 +26,11 @@ static int	logic_printf(char conversion, va_list args)
 	else if (conversion == '%')
 		printed_count = ft_putchr('%');
 	else if (conversion == 'u')
-		printed_count = ft_putu(va_arg(args,unsigned int));
+		printed_count = ft_putu(va_arg(args, unsigned int));
 	else if (conversion == 'x' || conversion == 'X')
 		printed_count = ft_putx(va_arg(args, unsigned long), conversion);
+	else if (conversion == 'p')
+		printed_count = ft_putptr(va_arg(args, unsigned long));
 	return (printed_count);
 }
 
@@ -40,11 +42,11 @@ int	ft_printf(const char *fmt, ...)
 
 	va_start(args, fmt);
 	printed_count = 0;
-	i  = 0;
-	while (*(fmt+i))
+	i = 0;
+	while (*(fmt + i))
 	{
 		if (*(fmt + i) == '%' && (ft_checkconversion(*(fmt + i + 1))))
-			printed_count += logic_printf(*(fmt + (i++) + 1),args);
+			printed_count += logic_printf(*(fmt + (i++) + 1), args);
 		else if (*(fmt + i) == '%' && !(ft_checkconversion(*(fmt + i + 1))))
 		{
 			write(1, "Conversion Error", 17);
@@ -57,11 +59,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(args);
 	return (printed_count);
 }
-			//else if (*fmt == 'p')
-			//else if (*fmt == 'd')
-			//else if (*fmt == 'i')
-			//else if (*fmt == 'u')
-			//else if (*fmt == 'x')
-			//else if (*fmt == 'X')
-			//else if (*fmt == '%')
-

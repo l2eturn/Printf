@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRC = ft_printf.c ft_checkconversion.c ft_putstr.c\
-	  ft_putnbr.c ft_putchr.c ft_putu.c\
+	  ft_putnbr.c ft_putchr.c ft_putu.c ft_putx.c ft_putptr.c\
 
 SRC_OBJ = $(SRC:.c=.o)
 
