@@ -23,6 +23,6 @@ int	ft_putptr(unsigned long nb)
 	}
 	printed_count = 0;
 	printed_count += ft_putstr("0x");
-	printed_count += ft_putx(nb, 'x');
+	printed_count += ft_putxul(nb, 'x');
 	return (printed_count);
 }

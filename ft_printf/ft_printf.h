@@ -24,7 +24,8 @@ int			ft_putchr(char c);
 int			ft_putstr(char *s);
 int			ft_putnbr(long nb);
 int			ft_putu(unsigned int nb);
-int			ft_putx(unsigned long nb, char c);
+int			ft_putx(unsigned int nb, char c);
 int			ft_putptr(unsigned long nb);
+int			ft_putxul(unsigned long nb, char c);
 //--------------------------------------------------
 #endif
