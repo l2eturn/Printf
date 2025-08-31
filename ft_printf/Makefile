@@ -10,21 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_putstr.c ft_printf.c ft_putstr.c\
-	  main.c ft_putchr.c \
+SRC = ft_printf.c ft_checkconversion.c ft_putstr.c\
+	  ft_putnbr.c ft_putchr.c\
 
 SRC_OBJ = $(SRC:.c=.o)
 
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LIB = ar rcs
+AR = ar rcs
 RM = rm -f
 
 all : $(NAME)
 
 $(NAME): $(SRC_OBJ)
-		$(LIB) $(NAME) $(SRC_OBJ)
+		$(AR) $(NAME) $(SRC_OBJ)
 clean:
 		$(RM) $(SRC_OBJ)
 

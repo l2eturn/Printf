@@ -12,25 +12,45 @@
 
 #include "ft_printf.h"
 
-static int	logic_printf()
+static int	logic_printf(char conversion, va_list args)
 {
+	int	printed_count;
 
+	printed_count = 0;
+	if (conversion == 'c')
+		printed_count = ft_putchr(va_arg(args, int));
+	else if (conversion == 's')
+		printed_count = ft_putstr(va_arg(args, char *));
+	else if (conversion == 'd')
+		printed_count = ft_putnbr(va_arg(args, int));
+	return (printed_count);
 }
 
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	args;
-	va_start(args, fmt);
+	int		printed_count;
+	int		i;
 
-	while (*fmt)
+	va_start(args, fmt);
+	printed_count = 0;
+	i  = 0;
+	while (*(fmt+i))
 	{
-		if (*fmt == '%')
+		if (*(fmt + i) == '%' && (ft_checkconversion(*(fmt + i + 1))))
+			printed_count += logic_printf(*(fmt + (i++) + 1),args);
+		else if (*(fmt + i) == '%' && !(ft_checkconversion(*(fmt + i + 1))))
 		{
-			fmt ++;
-			if (*fmt == 'c')
-				ft_putchr(va_arg(args, int));
-			else if (*fmt == 's')
-				ft_putstr(va_arg(args, char *));
+			write(1, "Conversion Error", 17);
+			return (printed_count);
+		}
+		else
+			printed_count += ft_putchr(*(fmt + i));
+		i ++;
+	}
+	va_end(args);
+	return (printed_count);
+}
 			//else if (*fmt == 'p')
 			//else if (*fmt == 'd')
 			//else if (*fmt == 'i')
@@ -38,11 +58,4 @@ int	ft_printf(const char *fmt, ...)
 			//else if (*fmt == 'x')
 			//else if (*fmt == 'X')
 			//else if (*fmt == '%')
-		}
-		else
-			ft_putchr(*fmt);
-		fmt ++;
-	}
-	va_end(args);
-	return (1);
-}
+

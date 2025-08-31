@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slimvutt <slimvut@fpgij;dgj;ds.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 00:33:24 by slimvutt          #+#    #+#             */
-/*   Updated: 2025/09/01 00:33:24 by slimvutt         ###   ########.fr       */
+/*   Created: 2025/09/01 03:10:40 by slimvutt          #+#    #+#             */
+/*   Updated: 2025/09/01 03:10:40 by slimvutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
+#include "ft_printf.h"
 
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_putnbr(long nb)
+{
+	int	printed_count;
 
-# define TRUE 1
-# define FALSE 0
-//--------------------------------------------------
-int			ft_printf(const char *fmt, ...);
-int			ft_putchr(char c);
-int			ft_putstr(char *s);
-int			ft_checkconversion(char c);
-int			ft_putnbr(long nb);
-//--------------------------------------------------
-#endif
+	printed_count = 0;
+	if (nb < 0 )
+	{
+		nb = (-1) * nb;
+		printed_count += ft_putchr('-');
+	}
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	printed_count += ft_putchr((nb % 10) + '0');
+	return (printed_count);
+}
