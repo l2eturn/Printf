@@ -18,7 +18,7 @@ int	ft_putu(unsigned int nb)
 
 	printed_count = 0;
 	if (nb >= 10)
-		ft_putu(nb / 10);
+		printed_count += ft_putu(nb / 10);
 	printed_count += ft_putchr(nb % 10 + '0');
 	return (printed_count);
 }

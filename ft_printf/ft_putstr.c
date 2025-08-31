@@ -17,11 +17,9 @@ int	ft_putstr(char *s)
 	int	count;
 
 	count = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
 	while (*s)
-	{
-		ft_putchr(*s);
-		s ++;
-		count ++;
-	}
+		count += ft_putchr(*s++);
 	return (count);
 }

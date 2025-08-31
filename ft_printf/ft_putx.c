@@ -18,9 +18,8 @@ int	ft_putx(unsigned long nb, char c)
 	int		printed_count;
 
 	printed_count = 0;
-	if (c == 'x')
-		basehex = "0123456789abcdef";
-	else
+	basehex = "0123456789abcdef";
+	if (c == 'X')
 		basehex = "0123456789ABCDEF";
 	if (nb >= 16)
 		printed_count += ft_putx(nb / 16, c);

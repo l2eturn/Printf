@@ -16,6 +16,11 @@ int	ft_putptr(unsigned long nb)
 {
 	int	printed_count;
 
+	if (!nb)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	printed_count = 0;
 	printed_count += ft_putstr("0x");
 	printed_count += ft_putx(nb, 'x');
