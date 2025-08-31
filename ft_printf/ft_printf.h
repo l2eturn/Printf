@@ -25,5 +25,6 @@ int			ft_putchr(char c);
 int			ft_putstr(char *s);
 int			ft_checkconversion(char c);
 int			ft_putnbr(long nb);
+int			ft_putu(unsigned int nb);
 //--------------------------------------------------
 #endif

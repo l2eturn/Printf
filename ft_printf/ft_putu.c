@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchr.c                                        :+:      :+:    :+:   */
+/*   ft_putu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slimvutt <slimvut@fpgij;dgj;ds.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 00:59:42 by slimvutt          #+#    #+#             */
-/*   Updated: 2025/09/01 00:59:42 by slimvutt         ###   ########.fr       */
+/*   Created: 2025/09/01 03:51:46 by slimvutt          #+#    #+#             */
+/*   Updated: 2025/09/01 03:51:46 by slimvutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchr(char c)
+int	ft_putu(unsigned int nb)
 {
-	write(1, &c, 1);
-	return (1);
+	int	printed_count;
+
+	printed_count = 0;
+	if (nb >= 10)
+		ft_putu(nb / 10);
+	printed_count += ft_putchr(nb % 10 + '0');
+	return (printed_count);
 }

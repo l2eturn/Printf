@@ -21,8 +21,12 @@ static int	logic_printf(char conversion, va_list args)
 		printed_count = ft_putchr(va_arg(args, int));
 	else if (conversion == 's')
 		printed_count = ft_putstr(va_arg(args, char *));
-	else if (conversion == 'd')
+	else if (conversion == 'd' || conversion == 'i')
 		printed_count = ft_putnbr(va_arg(args, int));
+	else if (conversion == '%')
+		printed_count = ft_putchr('%');
+	else if (conversion == 'u')
+		printed_count = ft_putu(va_arg(args,unsigned int));
 	return (printed_count);
 }
 
