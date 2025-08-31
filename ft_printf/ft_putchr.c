@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slimvutt <slimvut@fpgij;dgj;ds.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 00:33:24 by slimvutt          #+#    #+#             */
-/*   Updated: 2025/09/01 00:33:24 by slimvutt         ###   ########.fr       */
+/*   Created: 2025/09/01 00:59:42 by slimvutt          #+#    #+#             */
+/*   Updated: 2025/09/01 00:59:42 by slimvutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
+#include <unistd.h>
 
-# define FT_PRINTF
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-
-# define TRUE 1
-# define FALSE 0
-//--------------------------------------------------
-int			ft_printf(const char *fmt, ...);
-int			ft_putchr(char c);
-int			ft_putstr(char *s);
-//--------------------------------------------------
-#endif
+int	ft_putchr(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
