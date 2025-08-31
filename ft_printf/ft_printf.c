@@ -49,7 +49,7 @@ int	ft_printf(const char *fmt, ...)
 			printed_count += logic_printf(*(fmt + (i++) + 1), args);
 		else if (*(fmt + i) == '%' && !(ft_checkconversion(*(fmt + i + 1))))
 		{
-			write(1, "Conversion Error", 17);
+			write(2, "Conversion Error\n", 18);
 			return (printed_count);
 		}
 		else
