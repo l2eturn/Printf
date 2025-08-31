@@ -17,14 +17,13 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-# define TRUE 1
-# define FALSE 0
 //--------------------------------------------------
 int			ft_printf(const char *fmt, ...);
+int			ft_checkconversion(char c);
 int			ft_putchr(char c);
 int			ft_putstr(char *s);
-int			ft_checkconversion(char c);
 int			ft_putnbr(long nb);
 int			ft_putu(unsigned int nb);
+int			ft_putx(unsigned long nb, char c);
 //--------------------------------------------------
 #endif

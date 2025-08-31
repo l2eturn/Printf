@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slimvutt <slimvut@fpgij;dgj;ds.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 03:10:40 by slimvutt          #+#    #+#             */
-/*   Updated: 2025/09/01 03:10:40 by slimvutt         ###   ########.fr       */
+/*   Created: 2025/09/01 04:14:14 by slimvutt          #+#    #+#             */
+/*   Updated: 2025/09/01 04:14:14 by slimvutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(long nb)
+int	ft_putx(unsigned long nb, char c)
 {
-	int	printed_count;
+	char	*basehex;
+	int		printed_count;
 
 	printed_count = 0;
-	if (nb < 0 )
-	{
-		nb = (-1) * nb;
-		printed_count += ft_putchr('-');
-	}
-	if (nb >= 10)
-		printed_count += ft_putnbr(nb / 10);
-	printed_count += ft_putchr((nb % 10) + '0');
+	if (c == 'x')
+		basehex = "0123456789abcdef";
+	else
+		basehex = "0123456789ABCDEF";
+	if (nb >= 16)
+		printed_count += ft_putx(nb / 16, c);
+	printed_count += ft_putchr(basehex[nb % 16]);
 	return (printed_count);
 }

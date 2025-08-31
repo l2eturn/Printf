@@ -27,6 +27,8 @@ static int	logic_printf(char conversion, va_list args)
 		printed_count = ft_putchr('%');
 	else if (conversion == 'u')
 		printed_count = ft_putu(va_arg(args,unsigned int));
+	else if (conversion == 'x' || conversion == 'X')
+		printed_count = ft_putx(va_arg(args, unsigned long), conversion);
 	return (printed_count);
 }
 
